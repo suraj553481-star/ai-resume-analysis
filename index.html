@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI Resume Analyzer</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+  <div class="logo">
+    <span>AI</span> Resume Analyzer
+  </div>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+  <nav id="navMenu">
+    <a href="#home">Home</a>
+    <a href="#analyzer">Analyzer</a>
+    <a href="#jobs">Jobs</a>
+    <a href="#resume-builder">Resume Builder</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#about">About</a>
+  </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <div class="badge">
+      AI • NLP • MACHINE LEARNING
+    </div>
+
+    <h1>
+      AI Resume Analyzer
+      <span>& Intelligent Job Recommendation</span>
+    </h1>
+
+    <p>
+      Analyze your resume, identify important skills and
+      qualifications, and discover suitable job opportunities
+      using Artificial Intelligence and NLP.
+    </p>
+
+    <div class="buttons">
+
+      <a href="#analyzer" class="btn primary">
+        Analyze Resume
+      </a>
+
+      <a href="#workflow" class="btn secondary">
+        View Workflow
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="hero-card">
+
+    <div class="circle">
+      📄
+    </div>
+
+    <h2>Smart Resume Scan</h2>
+
+    <p>
+      NLP powered resume analysis
+    </p>
+
+    <div class="score">
+
+      <span>Profile Match</span>
+
+      <strong>92%</strong>
+
+    </div>
+
+    <div class="progress">
+      <div></div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ANALYZER ================= -->
+
+<section class="section analyzer" id="analyzer">
+
+  <div class="heading">
+
+    <small>01 / RESUME ANALYZER</small>
+
+    <h2>
+      Upload Your Resume
+    </h2>
+
+    <p>
+      Upload your PDF or DOCX resume and analyze
+      your candidate profile.
+    </p>
+
+  </div>
+
+
+  <div class="analyzer-grid">
+
+
+    <!-- UPLOAD -->
+
+    <div class="upload-card">
+
+      <label class="upload-box" for="resume">
+
+        <div class="upload-icon">
+          ↑
+        </div>
+
+        <h3>
+          Upload Resume
+        </h3>
+
+        <p>
+          PDF / DOC / DOCX
+        </p>
+
+        <input
+  type="file"
+  id="resume"
+  accept=".pdf,.doc,.docx"
+>
+
+        <span id="fileName"></span>
+
+      </label>
+
+
+      <button
+        class="btn primary analyze-btn"
+        onclick="analyzeResume()"
+        
+      >
+        Analyze Resume
+      </button>
+<button
+    type="button"
+    id="downloadReportBtn"
+    onclick="downloadReport()"
+    style="display:none;"
+>
+    📄 Download Analysis PDF
+</button>
+
+      <p class="note">
+        This is a frontend prototype.
+      </p>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div class="result-card">
+
+      <div class="result-header">
+
+        <div>
+
+          <small>
+            AI ANALYSIS
+          </small>
+
+          <h2>
+            Candidate Profile
+          </h2>
+
+        </div>
+
+
+        <div class="match">
+
+          <b id="matchScore">
+            --
+          </b>
+
+          <small>
+            Match
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <div id="result">
+
+        <p class="empty">
+          Upload your resume and click
+          <b>Analyze Resume</b>.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= JOBS ================= -->
+
+<section class="section jobs" id="jobs">
+
+  <div class="heading">
+
+    <small>
+      02 / JOB RECOMMENDATION
+    </small>
+
+    <h2>
+      Recommended Jobs
+    </h2>
+
+    <p>
+      Suitable career opportunities based on
+      candidate skills and qualifications.
+    </p>
+
+  </div>
+
+
+  <div class="job-grid">
+
+
+    <!-- JOB 1 -->
+
+    <div class="job-card">
+
+      <div class="job-icon">
+        🤖
+      </div>
+
+      <span class="tag">
+        AI / ML
+      </span>
+
+      <h3>
+        AI / Machine Learning Engineer
+      </h3>
+
+      <p>
+        Build intelligent systems using Machine
+        Learning, Python and NLP.
+      </p>
+
+      <div class="skills">
+
+        <span>Python</span>
+        <span>ML</span>
+        <span>NLP</span>
+
+      </div>
+
+      <button onclick="jobDetails('AI / Machine Learning Engineer')">
+        View Details
+      </button>
+
+    </div>
+
+
+    <!-- JOB 2 -->
+
+    <div class="job-card">
+
+      <div class="job-icon">
+        💻
+      </div>
+
+      <span class="tag">
+        SOFTWARE
+      </span>
+
+      <h3>
+        Java Software Developer
+      </h3>
+
+      <p>
+        Develop applications and backend systems
+        using Java and databases.
+      </p>
+
+      <div class="skills">
+
+        <span>Java</span>
+        <span>SQL</span>
+        <span>HTML</span>
+
+      </div>
+
+      <button onclick="jobDetails('Java Software Developer')">
+        View Details
+      </button>
+
+    </div>
+
+
+    <!-- JOB 3 -->
+
+    <div class="job-card">
+
+      <div class="job-icon">
+        📊
+      </div>
+
+      <span class="tag">
+        DATA
+      </span>
+
+      <h3>
+        Data Analyst
+      </h3>
+
+      <p>
+        Analyze data and generate useful insights
+        using modern data tools.
+      </p>
+
+      <div class="skills">
+
+        <span>Python</span>
+        <span>SQL</span>
+        <span>Data</span>
+
+      </div>
+
+      <button onclick="jobDetails('Data Analyst')">
+        View Details
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- ================= RESUME BUILDER ================= -->
+
+<section class="section resume-builder" id="resume-builder">
+
+  <div class="heading">
+    <small>03 / RESUME BUILDER</small>
+
+    <h2>Create Your Resume</h2>
+
+    <p>
+      Enter your details and generate a professional resume.
+    </p>
+  </div>
+
+  <div class="builder-card">
+
+    <!-- PERSONAL DETAILS -->
+
+    <h3>Personal Details</h3>
+
+    <input
+      type="text"
+      id="resumeName"
+      placeholder="Full Name"
+    >
+
+    <input
+      type="text"
+      id="resumeRole"
+      placeholder="Job Title / Role"
+    >
+
+    <input
+      type="email"
+      id="resumeEmail"
+      placeholder="Email"
+    >
+
+    <input
+      type="tel"
+      id="resumePhone"
+      placeholder="Phone Number"
+    >
+
+    <input
+      type="text"
+      id="resumeLocation"
+      placeholder="City, State"
+    >
+
+    <!-- EDUCATION -->
+
+    <h3>Education</h3>
+
+    <textarea
+      id="resumeEducation"
+      placeholder="Example: B.Tech AI & Data Science - Ashokrao Mane Group of Institution"
+    ></textarea>
+
+    <!-- SKILLS -->
+
+    <h3>Skills</h3>
+
+    <input
+      type="text"
+      id="resumeSkills"
+      placeholder="Example: Python, Java, HTML, CSS, SQL"
+    >
+
+    <!-- PROJECTS -->
+
+    <h3>Projects</h3>
+
+    <textarea
+      id="resumeProjects"
+      placeholder="Enter your projects"
+    ></textarea>
+
+    <!-- EXPERIENCE -->
+
+    <h3>Experience</h3>
+
+    <textarea
+      id="resumeExperience"
+      placeholder="Internship / Experience / Fresher"
+    ></textarea>
+
+    <!-- CAREER OBJECTIVE -->
+
+    <h3>Career Objective</h3>
+
+    <textarea
+      id="resumeObjective"
+      placeholder="Write your career objective"
+    ></textarea>
+
+    <!-- TEMPLATE -->
+
+    <h3>Choose Resume Template</h3>
+
+    <div class="template-buttons">
+
+      <button onclick="changeTemplate('professional')">
+        Professional
+      </button>
+
+      <button onclick="changeTemplate('modern')">
+        Modern
+      </button>
+
+      <button onclick="changeTemplate('developer')">
+        Developer
+      </button>
+
+      <button onclick="changeTemplate('creative')">
+        Creative
+      </button>
+
+      <button onclick="changeTemplate('ats')">
+        Simple ATS
+      </button>
+
+    </div>
+
+    <!-- ================= LIVE RESUME PREVIEW ================= -->
+
+<div class="resume-preview-section">
+
+  <h3>Live Resume Preview</h3>
+
+  <div id="resumePreview" class="resume-preview">
+
+    <div class="preview-header">
+
+      <h1 id="previewName">
+        Your Name
+      </h1>
+
+      <h3 id="previewRole">
+        Job Title
+      </h3>
+
+      <p id="previewContact">
+        Email | Phone | Location
+      </p>
+
+    </div>
+
+
+    <div class="preview-section">
+
+      <h4>CAREER OBJECTIVE</h4>
+
+      <p id="previewObjective">
+        Your career objective will appear here.
+      </p>
+
+    </div>
+
+
+    <div class="preview-section">
+
+      <h4>EDUCATION</h4>
+
+      <p id="previewEducation">
+        Your education will appear here.
+      </p>
+
+    </div>
+
+
+    <div class="preview-section">
+
+      <h4>SKILLS</h4>
+
+      <p id="previewSkills">
+        Your skills will appear here.
+      </p>
+
+    </div>
+
+
+    <div class="preview-section">
+
+      <h4>PROJECTS</h4>
+
+      <p id="previewProjects">
+        Your projects will appear here.
+      </p>
+
+    </div>
+
+
+    <div class="preview-section">
+
+      <h4>EXPERIENCE</h4>
+
+      <p id="previewExperience">
+        Your experience will appear here.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+    <!-- DOWNLOAD -->
+
+    <button
+      class="download-btn"
+      onclick="downloadResumePDF()"
+    >
+      📥 Download Resume PDF
+    </button>
+
+  </div>
+
+</section>
+
+
+
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="section about" id="about">
+
+  <div class="heading">
+
+    <small>
+      04 / PROJECT
+    </small>
+
+    <h2>
+      Project Features
+    </h2>
+
+  </div>
+
+
+  <div class="feature-grid">
+
+
+    <div class="feature">
+      <div>⚡</div>
+
+      <h3>
+        Faster Screening
+      </h3>
+
+      <p>
+        Reduces manual resume screening time.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+      <div>🧠</div>
+
+      <h3>
+        NLP Analysis
+      </h3>
+
+      <p>
+        Extracts skills, education and experience.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+      <div>🎯</div>
+
+      <h3>
+        Smart Matching
+      </h3>
+
+      <p>
+        Matches candidate skills with job requirements.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+      <div>📈</div>
+
+      <h3>
+        Job Ranking
+      </h3>
+
+      <p>
+        Provides suitable job recommendations.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+
+
+</section>
+<!-- ================= JOB DETAILS MODAL ================= -->
+
+<div id="jobModal" class="job-modal">
+
+  <div class="job-modal-content">
+
+    <button
+      class="job-modal-close"
+      onclick="closeJobModal()"
+    >
+      ×
+    </button>
+
+    <div id="jobModalContent"></div>
+
+  </div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <h3>
+    AI Resume Analyzer
+  </h3>
+
+  <p>
+    Intelligent Job Recommendation System
+  </p>
+
+  <p>
+    Mini Project • B.Tech AI & Data Science • 2026–2027
+  </p>
+
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
